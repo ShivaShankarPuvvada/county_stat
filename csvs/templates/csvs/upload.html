@@ -1,0 +1,31 @@
+{% extends "myapp/base.html" %}
+{% load bootstrap5 %}
+
+{% block body_block %}
+<div class="container">
+    {% if success_message %}
+        <div class="alert alert-success" role="alert">
+            {{ success_message}}
+        </div>
+    {% elif error_message %}
+        <div class="alert alert-warning" role="alert">
+            {{ error_message}}
+        </div>
+    {% endif %}
+
+    <h1>Please select csv file for upload</h1>
+    <form action="" method="POST" enctype="multipart/form-data" class="form-control" >
+        {% csrf_token %}
+        {{ form }}
+        
+        <button type="submit" class="btn btn-primary">Add data</button>
+
+    </form>
+    <div>
+        <li>
+            <a href="{% url 'admin:index' %}">Admin</a>
+        </li>
+    </div>
+
+</div>
+{% endblock %}
