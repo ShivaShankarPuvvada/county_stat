@@ -34,7 +34,7 @@ def upload_file_view(request):
                 elif n == 1:
                     print(row)
                     n = n + 1
-                elif n % 90 == 0:
+                elif n % 20 == 0:
                     print(row)
                     n = n + 1
                 else:

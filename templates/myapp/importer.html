@@ -1,0 +1,26 @@
+{% extends "myapp/base.html" %}
+{% block body_block %}
+  {% if success_import %}
+  <div class="alert alert-success" role="alert">
+      {{ success_import}}
+  </div>
+  {% elif error_import %}
+  <div class="alert alert-warning" role="alert">
+      {{ error_import}}
+  </div>
+  {% endif %}
+  <h1>Please select csv or xlsx file to Import</h1>
+  <form method="post" enctype="multipart/form-data" class="form-control">
+    {% csrf_token %}
+    <input type="file" class="" name="myfile">
+    <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+  <div>
+  <li>
+    Let's check the import: <a href="{% url 'admin:index' %}">Admin</a>
+  </li>
+  </div>
+<h3> This one is not working right. </h3>
+<p>I would like to develop this to import all types of tables that match the data fields in the myapp/models.py </p>
+<p>I would like to import both csv and xlsx files. I think I can figure this one out but haven't had the time to do so yet.</p>
+{% endblock %}

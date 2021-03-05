@@ -30,6 +30,9 @@
               <li class="nav-item">
                 <a class="nav-link active" href="{% url 'csvs:upload-view' %}">Upload File</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'myapp:importer' %}">Import CSV</a>
+              </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                   <a class="nav-link active" href="{% url 'accounts:profile' %}">Profile Changes</a>
