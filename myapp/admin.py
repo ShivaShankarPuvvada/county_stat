@@ -5,8 +5,7 @@ from myapp.models import (Agency)
 # Register your models here.
 @admin.register(Agency)
 class AgencyAdmin(ImportExportModelAdmin):
-    list_display = ('system_name', 'county', 'state', 'active', 'system_type', 'address', 'city', 'zipcode')
-    pass
+    list_display = ('system_name', 'county', 'state', 'active', 'system_type', 'address', 'city', 'zipcode', 'system_no',)
 
 # admin.site.register(Agency)
 # @admin.register(SystemNumber)
