@@ -7,6 +7,9 @@ class AgencyResource(resources.ModelResource):
         model = Agency
         fields = ('system_name', 'county', 'state', 'active', 
             'system_type', 'address', 'city', 'zipcode','system_no' )
+        
+        import_id_fields = ['system_name', 'system_no']
+
 
 # class SystemNoResource(resources.ModelResource):
 #     system_name = fields.Field(
