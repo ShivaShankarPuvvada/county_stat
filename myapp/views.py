@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .resources import AgencyResource, SystemNoResource
+from .resources import AgencyResource
 from tablib import Dataset
+
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -28,23 +29,26 @@ def index(request):
 #     return response
 
 def simple_upload(request):
-    error_import = None
-    success_import = None
+    # error_import = None
+    # success_import = None
     if request.method == 'POST':
         agency_resource = AgencyResource()
-        system_resource = SystemNoResource()
+        # system_resource = SystemNoResource()
         dataset = Dataset()
         new_r = request.FILES['myfile']
 
-        imported_data = dataset.load(new_r.read().decode('utf-8'),format='csv')
+        # imported_data = dataset.load(new_r.read(),format='csv')
+        imported_data = Dataset().load(new_r.read().decode(), format='csv', headers=False)
+        print(imported_data)
+        # imported_data = dataset.load(new_r.read())
         result = agency_resource.import_data(dataset, dry_run=True)  # Test the data import
-        result = system_resource.import_data(dataset, dry_run=True)
-        
+        # result = system_resource.import_data(dataset, dry_run=True)
+        # import pdb; pdb.set_trace();
         # if result.is_valid():
         #     success_import = "import Successful..."
         if not result.has_errors():
-            error_import = "Oops. something went wrong could not import..."
+            # error_import = "Oops. something went wrong could not import..."
             agency_resource.import_data(dataset, dry_run=False)  # Actually import now
-            system_resource.import_data(dataset, dry_run=False) 
+            # system_resource.import_data(dataset, dry_run=False) 
     return render(request, 'myapp/importer.html')
 

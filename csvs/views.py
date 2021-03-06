@@ -3,7 +3,7 @@ from .forms import CsvForm
 from .models import Csv
 import csv
 from django.contrib.auth.models import User
-from myapp.models import SystemNumber, Agency, County
+from myapp.models import Agency, County
 # Create your views here.
 def upload_file_view(request):
     error_message = None
@@ -64,10 +64,10 @@ def upload_file_view(request):
                 #     zipcode = row[7],
                 # )
 
-                SystemNumber.objects.get_or_create(
-                    sys_name= ag_sys_name,
-                    system_no= ag_sys_no, 
-                )
+                # SystemNumber.objects.get_or_create(
+                #     sys_name= ag_sys_name,
+                #     system_no= ag_sys_no, 
+                # )
 
 
         obj.activated=True
